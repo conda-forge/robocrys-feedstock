@@ -9,8 +9,6 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/robocrys-{{ version }}.tar.gz
   sha256: c8155bbc13efbf66ce0a834ebd0eaba9102f2c405a9cbaac071aa230d81ee5f6
-  patches:
-    - pymatgen.patch
 
 build:
   number: 0
