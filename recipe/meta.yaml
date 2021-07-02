@@ -11,7 +11,7 @@ source:
   sha256: c8155bbc13efbf66ce0a834ebd0eaba9102f2c405a9cbaac071aa230d81ee5f6
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - robocrys = robocrys.cli:main
