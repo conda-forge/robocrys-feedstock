@@ -1,5 +1,5 @@
 {% set name = "robocrys" %}
-{% set version = "0.2.6" %}
+{% set version = "0.2.7" %}
 
 
 package:
@@ -8,9 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/robocrys-{{ version }}.tar.gz
-  sha256: d76315881193abec75e8e73773f88eca29a18f543f441aee28b8f6122bca8ad5
-  patches: 
-    - pymatgen.patch
+  sha256: c8155bbc13efbf66ce0a834ebd0eaba9102f2c405a9cbaac071aa230d81ee5f6
 
 build:
   number: 0
@@ -51,7 +49,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'Automatic generation of crystal structure descriptions.'
+  summary: Automatic generation of crystal structure descriptions.
   description: |
     Robocrystallographer is a tool to generate text descriptions of
     crystal structures. Similar to how a real-life crystallographer
