@@ -33,6 +33,7 @@ requirements:
     - python >=3.6
     - scipy
     - spglib
+    - mp-api
 
 test:
   imports:
