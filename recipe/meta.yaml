@@ -1,17 +1,17 @@
 {% set name = "robocrys" %}
 {% set version = "0.2.10" %}
-
+{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/robocrys-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/robocrys-{{ version }}.tar.gz
   sha256: 6ca56df390dc312e4cb8fafcc1d9a5e132bcefd2b62cb2bbe007c13e7206d2bc
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - robocrys = robocrys.cli:main
@@ -20,7 +20,8 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
+    - setuptools
   run:
     - ruamel.yaml
     - inflect
@@ -31,12 +32,14 @@ requirements:
     - pubchempy
     - pybtex
     - pymatgen >=2024.1.26
-    - python >=3.6
+    - python >={{ python_min }}
     - scipy
     - spglib >=2.5.0
     - mp-api
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - robocrys
     - robocrys.condense
