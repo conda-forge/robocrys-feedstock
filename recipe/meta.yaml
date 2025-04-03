@@ -1,5 +1,5 @@
 {% set name = "robocrys" %}
-{% set version = "0.2.10" %}
+{% set version = "0.2.11" %}
 {% set python_min = "3.10" %}
 
 package:
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/robocrys-{{ version }}.tar.gz
-  sha256: 6ca56df390dc312e4cb8fafcc1d9a5e132bcefd2b62cb2bbe007c13e7206d2bc
+  sha256: f45f6807eec2d418adc92a6fa539435bb2c89ce4563d370de60b482410ed4025
 
 build:
-  number: 1
+  number: 0
   noarch: python
   entry_points:
     - robocrys = robocrys.cli:main
