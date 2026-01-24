@@ -1,5 +1,5 @@
 {% set name = "robocrys" %}
-{% set version = "0.2.12" %}
+{% set version = "0.2.13" %}
 {% set python_min = "3.10" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/robocrys-{{ version }}.tar.gz
-  sha256: 424200ff6d75ebda16e3d1c379ff0a1c6e3c4c814fc14cc05a0098cccde2b42c
+  sha256: 8c52770d37d9e241e1f73ef6a9ad93e3070b1d0fa252aa8377f15bd0485d5719
 
 build:
   number: 0
@@ -25,7 +25,7 @@ requirements:
   run:
     - ruamel.yaml
     - inflect
-    - matminer >=0.9.2
+    - matminer >=0.10.0
     - monty
     - networkx
     - numpy
@@ -33,7 +33,7 @@ requirements:
     - pybtex
     - pymatgen >=2024.1.26
     - python >={{ python_min }}
-    - scipy
+    - scipy >=1.17.0
     - spglib >=2.5.0
     - mp-api
 
