@@ -1,26 +1,29 @@
-{% set name = "robocrys" %}
-{% set version = "0.2.13" %}
-{% set python_min = "3.11" %}
+schema_version: 1
+
+context:
+  name: robocrys
+  version: "0.2.13"
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/robocrys-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/robocrys-${{ version }}.tar.gz
   sha256: 8c52770d37d9e241e1f73ef6a9ad93e3070b1d0fa252aa8377f15bd0485d5719
 
 build:
-  number: 0
+  number: 1
   noarch: python
-  entry_points:
-    - robocrys = robocrys.cli:main
-  script: {{ PYTHON }} -m pip install . -vv
+  script: ${{ PYTHON }} -m pip install . -vv
+  python:
+    entry_points:
+      - robocrys = robocrys.cli:main
 
 requirements:
   host:
     - pip
-    - python {{ python_min }}
+    - python ${{ python_min }}.*
     - setuptools
   run:
     - ruamel.yaml
@@ -32,24 +35,28 @@ requirements:
     - pubchempy
     - pybtex
     - pymatgen >=2024.1.26
-    - python >={{ python_min }}
+    - python >=${{ python_min }}
     - scipy >=1.17.0
     - spglib >=2.5.0
     - mp-api
 
-test:
-  requires:
-    - python {{ python_min }}
-  imports:
-    - robocrys
-    - robocrys.condense
-  commands:
-    - robocrys --help
+tests:
+  - python:
+      imports:
+        - robocrys
+        - robocrys.condense
+      pip_check: false
+      python_version:
+        - ${{ python_min }}
+        - "*"
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+    script:
+      - robocrys --help
 
 about:
-  home: https://github.com/hackingmaterials/robocrystallographer
   license: MIT
-  license_family: MIT
   license_file: LICENSE
   summary: Automatic generation of crystal structure descriptions.
   description: |
@@ -60,8 +67,9 @@ about:
     generating a description. The package includes utilities for
     identifying molecule names, component orientations, heterostructure
     information, and more...
-  doc_url: https://hackingmaterials.lbl.gov/robocrystallographer/
-  dev_url: https://github.com/hackingmaterials/robocrystallographer
+  homepage: https://github.com/hackingmaterials/robocrystallographer
+  repository: https://github.com/hackingmaterials/robocrystallographer
+  documentation: https://hackingmaterials.lbl.gov/robocrystallographer/
 
 extra:
   recipe-maintainers:
