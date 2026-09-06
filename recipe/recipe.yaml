@@ -3,7 +3,6 @@ schema_version: 1
 context:
   name: robocrys
   version: "0.2.13"
-  python_min: "3.11"
 
 package:
   name: ${{ name|lower }}
@@ -24,7 +23,7 @@ build:
 requirements:
   host:
     - pip
-    - python 3.11.*
+    - python ${{ python_min }}.*
     - setuptools
   run:
     - ruamel.yaml
@@ -47,7 +46,9 @@ tests:
         - robocrys
         - robocrys.condense
       pip_check: false
-      python_version: ${{ python_min }}
+      python_version:
+        - ${{ python_min }}
+        - "*"
   - requirements:
       run:
         - python ${{ python_min }}.*
